@@ -13,6 +13,7 @@ code {
 }
 
 .aniAll {
+  margin-bottom: 20px;
   transform: translate(0);
   animation: aaa 1s;
 }

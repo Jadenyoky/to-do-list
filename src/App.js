@@ -29,7 +29,8 @@ const App = () => {
 
       setarrayText([...arrayText, {
         id: Date.now(),
-        text: iText.value
+        text: iText.value,
+        date: new Date().toDateString() + ' ' + new Date().toLocaleTimeString()
       }])
 
       // localStorage.setItem('element', JSON.stringify(arrayText))
@@ -38,13 +39,13 @@ const App = () => {
 
       iText.value = ''
 
-      console.log(arrayText)
     }
   }
 
   useEffect(()=>{
     localStorage.setItem('element', JSON.stringify(arrayText))
-    console.log('ray')
+    console.log('done')
+    console.log(arrayText)
   },[arrayText])
 
   return (
@@ -99,8 +100,8 @@ const App = () => {
                   padding: '20px',
                   gap: '20px',
                 }}>
-                  <Typography variant='h5' sx={{
-                    flexGrow: '2'
+                  <Typography data-aos variant='h5' sx={{
+                    flexGrow: '1',
                   }}>
                     {e.text}
                   </Typography>
@@ -114,13 +115,19 @@ const App = () => {
                     <Close />
                   </Button>
                 </Box>
-                <Divider/>
+                <Divider sx={{
+                  color: 'primary.main',
+                }}>
+                  <p style={{
+                    opacity: '0.8',
+                    margin: '0'
+                  }}>{e.date}</p>
+                </Divider>
               </div>
             )
           })
         }
       </div>
-
 
     </ThemeProvider>
   );
